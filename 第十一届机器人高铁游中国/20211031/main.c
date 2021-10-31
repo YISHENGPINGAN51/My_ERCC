@@ -1,3 +1,7 @@
+//路线
+#include "Route.h"
+
+//主功能
 #include "WalkLine.h"
 #include "led.h"
 #include "hzcode.h"
@@ -28,134 +32,58 @@ int main()
 //while(1)
 //{	 
 
-	//F3
+	//F1
 		int flag;  //主要方案为真  备用方案为假
-		flag = 0;  //改这里选方案
+		flag = 1;  //改这里选方案
 		if (flag)
 		{
-			//准备启动，从长沙出发
-			delay_ms(1000);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从长沙到武汉
-			WalkLine_ForWard_Major(0);
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			/*******************************************
-			调试，本来想尝试新线路武汉到合肥
-			Step_RightGo(15);
-			Front_RightTurn();
-			delay_ms(100);
-			Forjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			*******************************************/
-			//从武汉到郑州
-			Step_RightGo(8);
-			delay_ms(100);
-			Front_LeftTurn();
-			delay_ms(100);
-			Front_QTI_TimeForWard(20);
-			WalkLine_ForWard_Minor(0);
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从郑州到合肥
-			Step_LeftGo(10);
-			delay_ms(100);
-			Behind_LeftTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从合肥到郑州
-			Forjudge();
-			delay_ms(100);
-			//从郑州到太原
-			Step_RightGo(5);
-			delay_ms(100);
-			Front_LeftTurn();
-			delay_ms(100);
-			WalkLine_ForWard_Major(0);
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从太原到西安
-			Step_RightGo(10);
-			delay_ms(100);
+			Route1();
+		}
+		else
+		{
+			//从南京到南昌
 			Behind_RightTurn();
 			delay_ms(100);
 			Backjudge();
 			delay_ms(100);
 			Voice_Broadcast();
 			delay_ms(100);
-			//从西安到太原
+			//从南昌到南京
 			WalkLine_ForWard_Major(0);
 			delay_ms(100);
-			//从太原到石家庄
-			Front_RightTurn();
-			delay_ms(100);
-			Forjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从石家庄到济南
-			Front_RightTurn();
-			delay_ms(100);
-			Forjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从济南到天津
+			//从南京到连云港
 			Step_RightGo(10);
 			delay_ms(100);
-			Behind_RightTurn();
+			Front_LeftTurn();
 			delay_ms(100);
-			WalkLine_BackWard_Major(0);
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从天津到北京
-			Step_RightGo(5);
-			delay_ms(100);
-			Behind_LeftTurn();
-			delay_ms(100);
-			Backjudge();
+			Forjudge();
 			delay_ms(100);
 			Voice_Broadcast();
 			delay_ms(100);
-			//从北京到天津
-			WalkLine_ForWard_Major(0);
-			delay_ms(100);
-			//从天津到济南
+			//从连云港到青岛 
 			Front_RightTurn();
 			delay_ms(100);
 			WalkLine_ForWard_Major(0);
 			delay_ms(100);
-			//从济南到徐州
-			Step_LeftGo(10);
+			Voice_Broadcast();
 			delay_ms(100);
-			Behind_LeftTurn();
+			//从青岛到连云港
+			Step_RightGo(10);
 			delay_ms(100);
-			Step_LeftGo(10);
+			Step_ForGo(5);
 			delay_ms(100);
 			Behind_LeftTurn();
 			delay_ms(100);
 			Backjudge();
 			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从徐州到南京
+			//从连云港到南京
 			Behind_LeftTurn();
 			delay_ms(100);
 			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
 			delay_ms(100);
 			//从南京到杭州
+			Step_LeftGo(10);
+			delay_ms(100);
 			Behind_LeftTurn();
 			delay_ms(100);
 			Backjudge();
@@ -166,59 +94,6 @@ int main()
 			Behind_RightTurn();
 			delay_ms(100);
 			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从南昌到长沙
-			Behind_RightTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-		}
-		else
-		{
-			//从北京到沈阳
-			Step_RightGo(30);
-			delay_ms(100);
-			Behind_RightTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从沈阳到大连
-			Step_RightGo(30);
-			delay_ms(100);
-			Behind_RightTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
-			delay_ms(100);
-			//从大连到沈阳
-			WalkLine_ForWard_Major(0);
-			delay_ms(100);
-			//从沈阳到北京
-			Step_RightGo(10);
-			delay_ms(100);
-			Behind_RightTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			//从北京到天津
-			Step_LeftGo(10);
-			delay_ms(100);
-			Behind_LeftTurn();
-			delay_ms(100);
-			Step_LeftGo(10);
-			delay_ms(100);
-			Behind_LeftTurn();
-			delay_ms(100);
-			Backjudge();
-			delay_ms(100);
-			Voice_Broadcast();
 			delay_ms(100);
 		}
 
